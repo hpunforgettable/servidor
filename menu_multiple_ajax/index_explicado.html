@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Menu múltiple 3</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/estilo.css">
+</head>
+<body>
+
+<ul class="lista">
+	
+</ul>
+
+
+<script type="text/javascript">
+		window.onload=function()
+		{
+			var lista= document.getElementsByClassName("lista")[0];
+			var conexion= new XMLHttpRequest();
+			var menu = [];
+			var botones = [];
+			var estados = [];
+			conexion.onreadystatechange=function()
+			{
+				if(this.readyState==4 && this.status==200)
+				{
+					var datos = JSON.parse(this.responseText); // capturar los objetos
+					console.log(datos);
+
+					for (i=0; i<datos.length; i++)
+					{
+						(function (indice)
+						{
+							var l1 = document.createElement("li");
+							botones[indice]=document.createElement("a");
+							botones[indice].href="#";
+							botones[indice].className=(datos[indice].item.items.length>0) ?  "boton" : "";
+							botones[indice].innerHTML=datos[i].item.texto;
+							l1.appendChild(botones[indice]);
+							lista.appendChild(l1);
+						if (datos[i].item.items.length>0)
+						{
+							menu[indice]=document.createElement("ul");
+							menu[indice].className="menu oculto";
+							
+						
+
+							for (var j=0; j<datos[i].item.items.length; j++)
+								{
+									var li2=document.createElement("li");
+									var a2=document.createElement("a");
+									a2.href="#";
+									a2.innerHTML = datos[i].item.items[j].item.texto;
+									li2.appendChild(a2);
+									menu[indice].appendChild(li2);
+
+								}
+
+							l1.appendChild(menu[indice]);
+							estados[indice]="cerrado";
+							botones[indice].onclick=function(evento)
+							{
+								evento.preventDefault();
+								if(estados[indice]=="cerrado")
+								{
+									menu[indice].className="menu";
+									estados[indice]="abierto"
+								}
+								else
+								{
+									menu[indice].className="menu oculto";
+									estados[indice]="cerrado"
+								}
+							}
+
+						}
+
+						})(i);
+					}
+						
+				}
+			};
+
+			conexion.open("GET", "menu.json", true);
+			conexion.send();
+			
+		}
+</script>
+
+
+</body>
+</html>

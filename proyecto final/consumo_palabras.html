@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+
+<p class="imprimir"></p>
+
+<script type="text/javascript">
+
+	window.onload=function()
+	{
+		var parrafo = document.getElementsByClassName("imprimir")[0];
+		var conexion = new XMLHttpRequest(); 
+				conexion.onreadystatechange=function()
+
+				{
+					if (this.readyState==4 && this.status==200)
+					{
+						var palabras=JSON.parse(this.responseText);	
+
+						console.log(palabras);
+
+						for (var i=0; i<palabras.palabras.length; i++)
+						{
+							console.log(palabras.palabras[i].length);
+							
+						}
+						var indice = Math.floor(Math.random()*palabras.palabras.length);
+						parrafo.innerHTML=palabras.palabras[indice]+" "+palabras.palabras[indice].length;
+
+							
+							
+					}
+				}
+
+				conexion.open("GET", "json/palabras_json.json", true); // GET y POST solo puede enviar objetos url
+				conexion.setRequestHeader("Content-Type","application/json") 
+
+				
+
+				conexion.send();
+			
+			
+	}
+
+</script>
+
+
+
+<!-- seleccionar una al alzar
+imprimir en un parrafo la palabra y la cantidad de caracteres.-->
+
+</body>
+</html>
+
+
+
+
+ 

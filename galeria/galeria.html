@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Galeria</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"> <!-- hacerlo responsive para que funcione en cualquier otro dispositivo a parte del PC-->
+	<link rel="stylesheet" type="text/css" href="css/estilo.css">
+
+</head>
+<body>
+
+<div class="contenedor">
+			<div class="contenedor-mobile">
+				<ul class="categoria slider_mobile" data-item="4"> <!--para saber cuantos item tiene la categoria ( este le dice a javascrip la cantidad de items)-->
+					<li><img src="http://placehold.it/600x600"></li>
+					<li><img src="http://placehold.it/600x600"></li>
+					<li><img src="http://placehold.it/600x600"></li>
+					<li><img src="http://placehold.it/600x600"></li>
+				</ul>
+
+				<a class="handler handler-left" href="#">&lt;</a> <!--todo lo que se hace click lleva enlace osea, a-->
+				<a class="handler handler-right" href="#">&gt;</a>
+			</div>
+
+				<div class="clearfix"></div>
+						<div class="contenedor-mobile">
+							<ul class="categoria slider_mobile" data-item="3"> <!--para saber cuantos item tiene la categoria ( este le dice a javascrip la cantidad de items)-->
+								<li><img src="http://placehold.it/600x600"></li>
+								<li><img src="http://placehold.it/600x600"></li>
+								<li><img src="http://placehold.it/600x600"></li>
+							
+							</ul>
+							<a class="handler handler-left" href="#">&lt;</a> <!--todo lo que se hace click lleva enlace osea, a-->
+							<a class="handler handler-right" href="#">&gt;</a>
+						</div>
+		</div>
+
+<script src="js/functions.js"></script>
+</body>
+</html>

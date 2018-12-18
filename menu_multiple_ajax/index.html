@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Menu múltiple 3</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/estilo.css">
+</head>
+<body>
+
+<ul class="lista">
+	
+</ul>
+
+
+<script type="text/javascript">
+		window.onload=function()
+		{
+			var lista= document.getElementsByClassName("lista")[0];
+			var conexion= new XMLHttpRequest();
+			var estados = [];
+			conexion.onreadystatechange=function()
+			{
+				if(this.readyState==4 && this.status==200)
+				{
+					// console.log(this.responseText)
+					console.log(JSON.parse(this.responseText));
+					var datos = JSON.parse(this.responseText); // capturar los objetos
+					for (i=0; i<datos.length; i++)
+					{
+						
+						var li=document.createElement("li");
+						var a=document.createElement("a");
+						a.className= (datos[i].item.items.length>0) ?  "boton" : ""; //*** ABAJO ***
+						a.href="#";
+						a.innerHTML = datos[i].item.texto;
+						li.appendChild(a);
+						lista.appendChild(li);
+
+						if (datos[i].item.items.length>0)
+						{	
+							var ul_interno = document.createElement("ul");
+							ul_interno.className="menu oculto";
+							li.appendChild(ul_interno);
+
+							for (var j=0; j<datos[i].item.items.length; j++)
+							{
+								var li2=document.createElement("li");
+								var a2=document.createElement("a");
+								a2.href="#";
+								a2.innerHTML = datos[i].item.items[j].item.texto;
+								li2.appendChild(a2);
+								ul_interno.appendChild(li2);
+
+							}
+						}
+
+					}
+
+
+					
+				}
+
+			}
+
+			conexion.open("GET", "menu.json", true); // meto que usaremos / URL / Síncrono o Asíncrono (por defecto es true por lo tanto asíncrono)
+
+			conexion.send();
+
+		};
+		
+					/*	ES LO MISMO QUE a.className= (datos[i].item.items.length>0) ?  "boton" : "";
+						if (datos[i].item.items.length>0)
+						{
+						a.className="boton";					
+
+						}
+						else
+						{
+						a.className="";
+						
+						
+						} */
+
+	</script>
+
+
+</body>
+</html>

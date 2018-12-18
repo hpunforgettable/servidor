@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Search</title>
+	<meta charset="utf-8">
+</head>
+<body>
+
+
+
+<script type="text/javascript">
+	window.onload= function()
+	{
+
+	
+		var parametros=window.location.search.slice(1).split("&");  // slice selecciona a partir del elemento del string que queremos mostrar split parte los elementos dividios por un elemento
+		var busqueda=["",""];
+
+		for (i=0; i<parametros.length; i++)
+		{
+			parametros[i]=parametros[i].split("=");
+
+			if (parametros[i][0]=="nombre") // si es igual a nombre guarda el valor 2 del array (ej pedro) en busqueda [0]
+			{
+				busqueda[0]=parametros[i][1];
+			}
+			if (parametros[i][0]=="apellido") 
+			{
+				busqueda[1]=parametros[i][1];
+			}
+
+		}
+
+		ajax ("GET","http://imove.ws/estudiantes/", function(datos){
+			var respuesta = JSON.parse(datos);
+			console.log(respuesta);
+
+		});
+
+		function ajax (metodo,url,callback,parametros,type) 
+		{
+			var conexion= new XMLHttpRequest(); 
+			conexion.onreadystatechange=function()
+			{
+				if (this.readyState==4 && this.status==200)
+				{
+					callback(this.responseTexts;
+				}
+			}
+			conexion.open(metodo, url, true);
+				if (type)
+				{
+					conexion.setRequestHeader("Content-Type","application/json");
+				}
+				else
+				{
+					conexion.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+				}
+			conexion.send((metodo=="POST")?parametros:"");
+		}
+
+
+
+
+		console.log(busqueda);
+
+
+	}
+</script>
+
+
+</body>
+</html>

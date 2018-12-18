@@ -1,0 +1,69 @@
+[
+	{
+		"item":
+		{
+			"texto":"Home",
+			"items":[]
+		}
+	},
+
+	{
+		"item":
+		{
+			"texto":"Categoria",
+			"items":
+			[
+				{
+					"item":
+					{
+						"texto":"Hombre"
+					}
+				},
+
+				{
+
+					"item":
+					{
+						"texto":"Mujer"
+					}
+				},
+
+				{
+
+					"item":
+					{
+						"texto":"Niño"
+					}
+				}
+			]
+		}
+	},
+
+	{
+		"item":
+		{
+			"texto":"Sobre Nosotros",
+			"items":
+			[
+				{
+					"item":
+					{
+						"texto":"Contacto"
+					}
+				},
+
+				{
+
+					"item":
+					{
+						"texto":"Sobre Nosotros"
+					}
+				}
+				
+			]
+		}
+	}
+
+
+
+]

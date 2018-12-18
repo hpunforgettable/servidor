@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Conexion POST</title>
+	<meta charset="utf-8">
+</head>
+<body>
+
+
+<form class="formulario">
+	
+	<input type="text" id="nombre">
+	<br>
+	<input type="submit" value="Enviar">
+
+</form>
+
+
+
+
+<script type="text/javascript">
+	window.onload=function()
+	{
+		var formulario =document.getElementsByClassName("formulario")[0];
+		var texto = document.getElementById("nombre");
+		var conexion = new XMLHttpRequest(); 
+
+			formulario.onsubmit=function(evento)
+			{
+				evento.preventDefault();
+				conexion.onreadystatechange=function()
+
+				{
+					if (this.readyState==4 && this.status==200)
+					{
+						console.log(this.responseText);
+					}
+				}
+
+				conexion.open("POST", "modificar.php", true);
+				conexion.setRequestHeader("Content-Type","application/x-www-form-urlencoded") 
+				conexion.send("nombre="+texto.value);
+			}
+	}
+
+</script>
+
+
+</body>
+</html>

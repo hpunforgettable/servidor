@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<title>CONEXION GET</title>
+	<meta charset="utf-8">
+
+</head>
+<body>
+
+<p class="contenedor"></p>
+	<script type="text/javascript">
+		window.onload=function()
+		{
+
+			var conexion= new XMLHttpRequest();
+			conexion.onreadystatechange=function()
+			{
+				if(this.readyState==4 && this.status==200)
+				{
+					// console.log(this.responseText)
+					console.log(JSON.parse(this.responseText));
+					var datos = JSON.parse(this.responseText); // capturar los objetos
+					document.getElementsByClassName("contenedor")[0].innerHTML=datos.nombre+" "+datos.apellido;
+				}
+
+			}
+
+			conexion.open("GET", "ajax.php", true); // meto que usaremos / URL / Síncrono o Asíncrono (por defecto es true por lo tanto asíncrono)
+
+			conexion.send();
+
+		};
+		
+
+
+	</script>
+
+</body>
+</html>

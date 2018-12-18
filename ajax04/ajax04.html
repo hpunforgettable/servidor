@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AJAX 4</title>
+	<meta charset="utf-8">
+</head>
+<body>
+
+
+
+<script type="text/javascript">
+	window.onload= function()
+	{
+		var parametros = {color:"rojo", producto:"pincel"}
+		ajax("POST","respuesta.php?a=5&b=8",function(datos)  // método, url, (una funcion e este caso es la funcion llamada callback
+			{
+				console.log(datos);
+			},JSON.stringify(parametros),true);
+
+		function ajax (metodo,url,callback,parametros,type) 
+		{
+			var conexion= new XMLHttpRequest(); 
+			conexion.onreadystatechange=function()
+			{
+				if (this.readyState==4 && this.status==200)
+				{
+					callback(this.responseText);
+				}
+			}
+			conexion.open(metodo, url, true);
+				if (type)
+				{
+					console.log("si");  //true
+					conexion.setRequestHeader("Content-Type","application/json");
+					
+				}
+				else
+				{
+					console.log("no"); //false
+					conexion.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+				}
+			conexion.send((metodo=="POST")?parametros:"");
+		}
+
+
+/*  ajax("GET","respuesta.php"); // método, url, (una funcion e este caso es la funcion llamada callback)
+
+		function ajax (metodo,url) 
+		{
+			var conexion= new XMLHttpRequest(); 
+			conexion.onreadystatechange=function()
+			{
+				if (this.readyState==4 && this.status==200)
+				{
+					callback(this.responseText);
+				}
+			}
+			conexion.open(metodo, url, true);
+			conexion.send();
+		}
+		
+		function callback (datos)
+		{
+			console.log(datos);
+		}
+
+
+
+ESTO ES LO MISMO QUE LO ANTERIOR*/
+
+
+
+	}
+
+
+</script>
+
+
+
+</body>
+</html>

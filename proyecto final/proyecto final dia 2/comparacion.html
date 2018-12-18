@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+
+
+<style type="text/css">
+
+	.teclas
+	{
+	 text-decoration: none;
+	}
+	
+</style>
+
+</head>
+<body>
+<form id="formulario">
+	<input type="text" name="" class="introducir">
+	<input type="submit" name="">
+</form>
+<p class="texto"></p>
+
+<ul class="teclado"></ul>
+
+
+	<script type="text/javascript">
+		window.onload = function()
+		{
+			var palabra= "amor".split(""); // almacenamos en palabra la palabra amor en por letras
+			console.log(palabra);
+			var formulario = document.getElementById("formulario");
+			var introducido = document.getElementsByClassName("introducir")[0];
+			var parrafo = document.getElementsByClassName("texto")[0];
+
+			formulario.onsubmit=function(evento)
+			{
+				evento.preventDefault();
+
+				var ocurrencias = [];
+
+				for (var i=0; i<palabra.length; i++)
+				{
+					 if (palabra[i]==introducido.value.toLowerCase())
+					 {
+					 	ocurrencias.push(i); // agrega a palabras el valor de i
+					 }
+				}
+
+				parrafo.innerHTML="La posición de la letra introducida está en el número: "+ocurrencias;
+				console.log(ocurrencias);	
+
+			}
+
+
+
+			var letras_teclado = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","ñ","o","p","q","r","s","t","u","v","w","x","y","z"];
+			var letras_teclado2 = "abcdefghijklmnñopqrstuvwxyz".split("");
+			var teclado = document.getElementsByClassName("teclado")[0];
+			var teclas = [];
+			var ocurrencias2 = [];
+			var usadas = [];
+				for (var i=0; i<letras_teclado.length; i++)
+					{
+						var item= document.createElement("li");
+						var boton=document.createElement("a");
+						boton.className="teclas";
+						boton.href="#";
+						boton.innerHTML=letras_teclado[i];
+						item.appendChild(boton);
+						teclado.appendChild(item);
+						teclas.push(boton);
+
+						(function(indice)
+						{ 
+							teclas[indice].onclick=function(evento)
+							{
+								evento.preventDefault();
+								console.log(teclas[indice].innerHTML);
+
+								if(usadas.indexOf(teclas[indice].innerHTML) < 0)
+								{
+									usadas.push(teclas[indice].innerHTML);
+									var acierto = 0; //creo una variable de control la cual se reinicia al 0 antes de entrar en el bucle
+
+									for (var j=0; j<palabra.length; j++)
+									{ 
+										 if (palabra[j]==teclas[indice].innerHTML)
+										 {
+										 	ocurrencias2.push(j); // agrega a palabras el valor de i
+										 	acierto = 1;
+										 	parrafo.innerHTML="La posición de la letra introducida está en el número: "+ocurrencias2;	
+
+										 }
+										
+									}
+									if(acierto < 1)
+									{
+										parrafo.innerHTML="VAS A MORIR PENDEJO"
+									}
+			
+									}else{
+									console.log("ya has usado esa letra pendejo")
+								}
+								console.log(usadas);
+							}
+
+						
+							
+								
+							
+
+
+						})(i);
+
+						
+					}
+
+					
+
+					
+
+
+
+			// ponemos una letra y al darle click que nos saque la posicion de la letra 
+
+		}
+	</script>
+
+</body>
+</html>

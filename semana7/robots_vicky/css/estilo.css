@@ -1,0 +1,112 @@
+body{
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+	font-size: 100%;
+}
+ul{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+.contenedor{
+	width: 800px;
+	margin: 100px auto 0;
+}
+.columna{
+	width: calc(50% - 40px);
+	padding: 20px;
+	float:left;
+}
+.tab{
+	display: block;
+	color: #666;
+	text-decoration: none;
+	text-align: center;
+	float: left;
+	width: calc(20% - 2px);
+	padding: 10px 0;
+	font-size: 0.8em;
+}
+.activa{
+	color:#333;
+	border-radius: 5px 5px 0 0;
+	border-top: 1px solid #666;
+	border-right: 1px solid #666;
+	border-left: 1px solid #666;
+}
+.panel{
+	padding: 10px 0;
+	display: none;
+}
+.activo{
+	display: block;
+}
+.opciom{
+	display: block;
+	width: 21%;
+	margin: 0 2%;
+	float: left;
+}
+.opciom img{
+	display: block;
+	width: 100%;
+}
+.clearfix{
+	clear:both;
+}
+.composicion{
+	position: relative;
+	width: 100%;
+}
+.composicion img{
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+.composicion img:nth-child(1){
+	z-index: 5;
+}
+.composicion img:nth-child(2){
+	z-index: 2;
+}
+.composicion img:nth-child(3){
+	z-index: 3;
+}
+.composicion img:nth-child(4){
+	z-index: 4;
+}
+.composicion img:nth-child(5){
+	z-index: 1;
+}
+
+.generar
+{
+	text-decoration: none;
+	color: #666;
+	border: 1px solid #666;
+	padding: 10px;
+}
+.descargar
+{
+	text-decoration: none;
+	display: none;
+	color: #8A0808;
+	border: 1px solid #8A0808;
+	padding: 10px;
+}
+
+.mostrar
+{
+	display: inline;
+}
+
+.reiniciar
+{
+	text-decoration: none;
+	color: #0B2161;
+	border: 1px solid #0B2161;
+	padding: 10px;
+}

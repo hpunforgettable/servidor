@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+
+<p class="imprimir"></p>
+
+<script type="text/javascript">
+
+	window.onload=function()
+	{
+		var parrafo = document.getElementsByClassName("imprimir")[0];
+		var conexion = new XMLHttpRequest(); 
+
+				conexion.onreadystatechange=function()
+
+				{
+					if (this.readyState==4 && this.status==200)
+					{
+						var palabras=JSON.parse(this.responseText);	
+
+						console.log(palabras);
+
+						for (var i=0; i<palabras.length; i++)
+						{
+							console.log(palabras[i].palabra);							
+						}
+						
+						var indice = Math.floor(Math.random()*palabras.length); // creamos una variable en la que almacenamos el índice de la palabra generada aleatoriamente
+						parrafo.innerHTML=palabras[indice].palabra+" "+palabras[indice].palabra.length;
+
+						var palabra_cortada = palabras[indice].palabra.split(""); // dividimos la palabra en segmentos de letras 
+						for(var i = 0; i < palabra_cortada.length; i++ ) 
+								{
+									var nuevo_parrafo = document.createElement("p"); 
+		  							nuevo_parrafo.innerHTML = palabra_cortada[i];
+		  							document.body.appendChild(nuevo_parrafo);
+								}
+
+						
+					}
+				}
+
+
+				conexion.open("GET", "json/palabras_json2.json", true); // GET y POST solo puede enviar objetos url
+				conexion.setRequestHeader("Content-Type","application/json") 
+
+				
+
+				conexion.send();
+	}
+
+</script>
+
+
+
+<!-- seleccionar una al alzar
+imprimir en un parrafo la palabra y la cantidad de caracteres.-->
+
+</body>
+</html>
+
+
+
+
+ 

@@ -1,0 +1,53 @@
+[
+	{
+		"categoria":
+			{
+				"nombre":"A",
+				"imagenes":
+				[
+					{"color":"FF0000"},
+					{"color":"CC0000"},
+					{"color":"990000"},
+					{"color":"660000"}
+				]
+			}
+	},
+
+	{
+		"categoria":
+			{
+				"nombre":"B",
+				"imagenes":
+				[
+					{"color":"00FF00"},
+					{"color":"00CC00"},
+					{"color":"009900"}
+				]
+			}
+	},
+
+	{
+		"categoria":
+			{
+				"nombre":"C",
+				"imagenes":
+				[
+					{"color":"0000FF"}
+				]
+			}
+	},
+	
+	{
+		"categoria":
+			{
+				"nombre":"D",
+				"imagenes":
+				[
+					{"color":"FF00FF"},
+					{"color":"CC00CC"},
+					{"color":"990099"},
+					{"color":"660066"}
+				]
+			}
+	}
+]
